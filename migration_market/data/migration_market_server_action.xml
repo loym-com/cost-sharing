@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="migration_market_solve_server_action" model="ir.actions.server">
+        <field name="name">Solve Migration Market</field>
+        <field name="model_id" ref="model_migration_market_pledge"/>
+        <field name="state">code</field>
+        <field name="code">action = model.action_solve_migration_market()</field>
+    </record>
+</odoo>

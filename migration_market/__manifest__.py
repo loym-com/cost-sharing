@@ -1,0 +1,22 @@
+{
+    "name": "Migration Market",
+    "version": "19.0.1.0.0",
+    "category": "Services",
+    "summary": "Manage module migration pledges and suppliers",
+    "depends": ["base"],
+    "external_dependencies": {"python": ["pyscipopt"]},
+    "data": [
+        "security/ir.model.access.csv",
+        "data/migration_market_server_action.xml",
+        "views/migration_market_solve_wizard_views.xml",
+        "views/migration_pledge_views.xml",
+        "views/migration_price_views.xml",
+        "views/res_partner_views.xml",
+        "views/ir_module_module_views.xml",
+        "views/migration_market_menus.xml",
+    ],
+    "license": "LGPL-3",
+    "author": "Loym",
+    "application": True,
+    "installable": True,
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form_migration_supplier" model="ir.ui.view">
+        <field name="name">res.partner.form.migration.supplier</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Migration Market">
+                    <group>
+                        <field name="is_migration_supplier"/>
+                        <field name="migration_supplier_score" invisible="not is_migration_supplier"/>
+                        <field name="migration_supplier_capacity" invisible="not is_migration_supplier"/>
+                    </group>
+                    <field name="migration_price_ids" invisible="not is_migration_supplier">
+                        <list editable="bottom">
+                            <field name="module_id"/>
+                            <field name="supplier_score" readonly="1"/>
+                            <field name="supplier_capacity" readonly="1"/>
+                            <field name="price"/>
+                            <field name="currency_id" column_invisible="True"/>
+                        </list>
+                    </field>
+                    <field name="migration_pledge_ids">
+                        <list editable="bottom">
+                            <field name="module_ids" widget="many2many_tags"/>
+                            <field name="wtp"/>
+                            <field name="value_of_quality"/>
+                            <field name="minimum_score"/>
+                            <field name="active"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="migration_market_supplier_action" model="ir.actions.act_window">
+        <field name="name">Suppliers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[("is_migration_supplier", "=", True)]</field>
+        <field name="context">{"default_is_migration_supplier": True}</field>
+    </record>
+</odoo>

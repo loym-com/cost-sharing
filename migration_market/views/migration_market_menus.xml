@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="migration_market_menu_root" name="Migration Market" sequence="10"/>
+    <menuitem
+        id="migration_market_menu_solve"
+        name="Solve"
+        parent="migration_market_menu_root"
+        action="migration_market_solve_server_action"
+        sequence="50"
+    />
+    <menuitem
+        id="migration_market_menu_pledges"
+        name="Pledges"
+        parent="migration_market_menu_root"
+        action="migration_market_pledge_action"
+        sequence="10"
+    />
+    <menuitem
+        id="migration_market_menu_suppliers"
+        name="Suppliers"
+        parent="migration_market_menu_root"
+        action="migration_market_supplier_action"
+        sequence="20"
+    />
+    <menuitem
+        id="migration_market_menu_price_offers"
+        name="Price Offers"
+        parent="migration_market_menu_root"
+        action="migration_price_action"
+        sequence="30"
+    />
+    <menuitem
+        id="migration_market_menu_modules"
+        name="Modules"
+        parent="migration_market_menu_root"
+        action="migration_market_module_action"
+        sequence="40"
+    />
+</odoo>

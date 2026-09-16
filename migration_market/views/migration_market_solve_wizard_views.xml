@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="migration_market_solve_wizard_view_form" model="ir.ui.view">
+        <field name="name">migration.market.solve.wizard.form</field>
+        <field name="model">migration.market.solve.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Migration Market Solution" create="0" edit="0" delete="0">
+                <sheet>
+                    <field name="result_html" nolabel="1" readonly="1"/>
+                </sheet>
+                <footer>
+                    <button string="Close" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

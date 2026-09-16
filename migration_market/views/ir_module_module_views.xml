@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_module_module_view_form_migration_price" model="ir.ui.view">
+        <field name="name">ir.module.module.form.migration.price</field>
+        <field name="model">ir.module.module</field>
+        <field name="inherit_id" ref="base.module_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Migration Prices">
+                    <field name="migration_price_ids">
+                        <list editable="bottom">
+                            <field name="supplier_id"/>
+                            <field name="supplier_score" readonly="1"/>
+                            <field name="supplier_capacity" readonly="1"/>
+                            <field name="price"/>
+                            <field name="currency_id" column_invisible="True"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="migration_market_module_action" model="ir.actions.act_window">
+        <field name="name">Modules</field>
+        <field name="res_model">ir.module.module</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[("state", "=", "installed")]</field>
+    </record>
+</odoo>

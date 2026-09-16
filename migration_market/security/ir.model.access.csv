@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_migration_market_pledge_user,migration.market.pledge.user,model_migration_market_pledge,base.group_user,1,1,1,1
+access_migration_price_user,migration.price.user,model_migration_price,base.group_user,1,1,1,1
+access_migration_market_solve_wizard_user,migration.market.solve.wizard.user,model_migration_market_solve_wizard,base.group_user,1,1,1,1
