@@ -5,6 +5,21 @@ from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
+def _distribute_payments(total_cost, pledge_limits):
+    payments = {}
+    remaining_cost = total_cost
+    remaining_pledges = len(pledge_limits)
+    for pledge_id, pledge_limit in sorted(
+        pledge_limits.items(), key=lambda item: item[1]
+    ):
+        equal_share = remaining_cost / remaining_pledges
+        payment = min(pledge_limit, equal_share)
+        payments[pledge_id] = payment
+        remaining_cost -= payment
+        remaining_pledges -= 1
+    return payments
+
+
 class MigrationPledge(models.Model):
     _inherit = "migration.market.pledge"
 
@@ -205,8 +220,7 @@ class MigrationPledge(models.Model):
             pledge for pledge in pledges if solver.getVal(activated[pledge.id]) > 0.5
         ]
 
-        # Every active pledge pays the same ratio of its own willingness to pay, so the
-        # total collected matches the total migration cost.
+        # Split the cost equally, fully using smaller pledges that cannot cover their share.
         active_wtp = {
             pledge.id: to_company_currency(pledge.wtp, pledge.currency_id)
             for pledge in active_pledges
@@ -215,13 +229,11 @@ class MigrationPledge(models.Model):
         total_wtp = sum(active_wtp.values())
         if total_cost and not total_wtp:
             raise UserError(_("Accepted offers cannot be covered by active pledges."))
-        payment_ratio = total_cost / total_wtp if total_wtp else 0
-        if payment_ratio > 1 and not company_currency.is_zero(total_cost - total_wtp):
+        if total_cost > total_wtp and not company_currency.is_zero(total_cost - total_wtp):
             raise UserError(_("Accepted offers cannot be covered by active pledges."))
+        active_payments = _distribute_payments(total_cost, active_wtp)
         payments = {
-            pledge.id: payment_ratio * active_wtp[pledge.id]
-            if pledge in active_pledges
-            else 0
+            pledge.id: active_payments.get(pledge.id, 0)
             for pledge in pledges
         }
 
