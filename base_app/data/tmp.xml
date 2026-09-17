@@ -1,0 +1,12 @@
+<odoo>
+    <!-- Server action to import minutes -->
+    <record id="action_import_module_minutes" model="ir.actions.server">
+        <field name="name">Import Module Minutes</field>
+        <field name="model_id" ref="model_app_module_version"/>
+        <field name="binding_model_id" ref="model_app_module_version"/>
+        <field name="state">code</field>
+        <field name="code">
+model.post_init_hook()
+        </field>
+    </record>
+</odoo>

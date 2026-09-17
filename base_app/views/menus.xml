@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_apps_usage_root"
+              name="Usage Billing"
+              parent="base.menu_management"
+              sequence="50"
+    >
+            <menuitem id="menu_app_usage_line_action"
+                    name="Daily Logs"
+                    action="action_app_usage_line"
+                    sequence="1"/>
+            <menuitem id="menu_app_usage_month_action"
+                    name="Monthly Aggregates"
+                    action="action_app_usage_month"
+                    sequence="1"/>
+            <menuitem id="menu_app_pricelist_action"
+                    name="Price List"
+                    action="action_app_pricelist"
+                    sequence="1"/>
+            <menuitem id="menu_app_module_version_action"
+                    name="App Version"
+                    action="action_app_module_version"
+                    sequence="1"/>
+            <menuitem id="menu_import_module_minutes_action"
+                    name="Import from CSV"
+                    action="action_import_module_minutes"
+                    sequence="1"/>
+    </menuitem>
+</odoo>

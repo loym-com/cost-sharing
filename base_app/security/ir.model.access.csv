@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+base_app.access_app_module_version,access_app_module_version,base_app.model_app_module_version,base.group_user,1,1,1,1
+base_app.access_app_pricelist,access_app_pricelist,base_app.model_app_pricelist,base.group_user,1,1,1,1
+base_app.access_app_usage_line,access_app_usage_line,base_app.model_app_usage_line,base.group_user,1,1,1,1
+base_app.access_app_usage_month,access_app_usage_month,base_app.model_app_usage_month,base.group_user,1,1,1,1

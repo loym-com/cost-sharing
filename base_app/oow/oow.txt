@@ -1,0 +1,39 @@
+oow init \
+  --initial-version 18.0\
+  --final-version 19.0\
+  --project-name test-18-19\
+  --extra-repository OCA/queue,OCA/server-auth,OCA/server-tools,OCA/spreadsheet,OCA/web \
+  --postgresql-version 18
+
+
+oow init \
+  --initial-version 19.0\
+  --final-version 20.0\
+  --project-name test-19-20\
+  --extra-repository OCA/OpenUpgrade,OCA/server-tools,OCA/agreement,OCA/brand,OCA/calendar,OCA/commission,OCA/connector,OCA/contract,OCA/credit-control,OCA/crm,OCA/dms,OCA/e-commerce,OCA/field-service,OCA/fleet,OCA/helpdesk,OCA/hr,OCA/hr-attendance,OCA/hr-holidays,OCA/knowledge,OCA/management-system,OCA/multi-company,OCA/partner-contact,OCA/product-attribute,OCA/project,OCA/reporting-engine,OCA/sale-reporting,OCA/sale-workflow,OCA/server-auth,OCA/server-backend,OCA/server-env,OCA/social,OCA/storage,OCA/timesheet,OCA/web \
+  --postgresql-version 18
+
+
+
+~/loym/oow/test-19-20/src/env_20.0/src/openupgrade/openupgrade_scripts/apriori.py
+
+renamed_modules = {}
+merged_modules = {}
+renamed_models = {}
+merged_models = {}
+
+
+
+~/loym/oow/test-19-20/src/env_20.0/src/openupgrade/docsource/modules190-200.rst
+
+Module coverage 18.0 -> 19.0
+============================
+
+.. include:: coverage_legend.rst
+
++---------------------------------------------------+----------------------+-------------------------------------------------+
+| Module                                            | Status               + Extra Information                               |
++===================================================+======================+=================================================+
+| base                                              | Done                 |                                                 |
++---------------------------------------------------+----------------------+-------------------------------------------------+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="app_module_version_view_list" model="ir.ui.view">
+        <field name="name">app.module.version.view.list</field>
+        <field name="model">app.module.version</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="module_id" optional="show" />
+                <field name="module_name" optional="show" />
+                <field name="version" optional="show" />
+                <field name="user_group_id" optional="show" />
+                <field name="minutes_worked" optional="show" />
+                <field name="current_price" optional="show" sum="Total" />
+                <field name="minutes_mig_to_next_version" optional="show" />
+                <field name="cost_mig_to_next_version" optional="show" />
+                <field name="total_income" sum="Total" column_invisible="1" />
+                <field name="total_cost" sum="Total" column_invisible="1" />
+                <field name="total_profit" sum="Total" column_invisible="1" />
+                <field name="currency_id" column_invisible="1" />
+            </list>
+        </field>
+    </record>
+    <record id="action_app_module_version" model="ir.actions.act_window">
+        <field name="name">Module Version</field>
+        <field name="res_model">app.module.version</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="app_module_version_view_list"/>
+    </record>
+</odoo>

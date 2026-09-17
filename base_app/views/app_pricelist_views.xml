@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_app_pricelist_list" model="ir.ui.view">
+        <field name="name">app.pricelist.list</field>
+        <field name="model">app.pricelist</field>
+        <field name="arch" type="xml">
+            <list string="App Price List">
+                <field name="module_id"/>
+                <field name="price"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="date_start"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_app_pricelist" model="ir.actions.act_window">
+        <field name="name">App Price List</field>
+        <field name="res_model">app.pricelist</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_app_pricelist_list"/>
+    </record>
+</odoo>

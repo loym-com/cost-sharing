@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- <record id="ir_module_module_view_form" model="ir.ui.view">
+        <field name="name">ir.module.module.view.form</field>
+        <field name="model">ir.module.module</field>
+        <field name="inherit_id" ref="base.module_form" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="versions" string="Versions">
+                    <field name="module_version_ids">
+                        <list>
+                            <field name="module_id" />
+                            <field name="version" />
+                            <field name="user_group_id" optional="hide" />
+                            <field name="current_price" optional="hide" sum="Total" />
+                            <field name="currency_id" column_invisible="1" />
+                            <field name="total_income" sum="Total" />
+                            <field name="total_cost" sum="Total" />
+                            <field name="total_profit" sum="Total" />
+                        </list>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record> -->
+    <record id="ir_module_module_view_list" model="ir.ui.view">
+        <field name="name">ir.module.module.view.list</field>
+        <field name="model">ir.module.module</field>
+        <field name="inherit_id" ref="base.module_tree" />
+        <field name="arch" type="xml">
+            <list position="inside">
+                <field name="minutes_worked" optional="hide" sum="Total"/>
+                <field name="year_price" optional="hide" sum="Total"/>
+                <field name="minutes_mig_to_next_version" optional="hide" sum="Total"/>
+                <field name="cost_mig_to_next_version" optional="hide" sum="Total"/>
+                <field name="currency_id" invisible="1" />
+            </list>
+        </field>
+    </record>
+    <record id="ir_module_module_view_search" model="ir.ui.view">
+        <field name="name">ir.module.module.view.search</field>
+        <field name="model">ir.module.module</field>
+        <field name="inherit_id" ref="base.view_module_filter" />
+        <field name="arch" type="xml">
+            <search position="inside">
+                <filter name="year_price_positive"
+                        string="Year Price"
+                        domain="[('minutes_worked', '&gt;', 0)]"/>
+                <filter name="mig_cost_positive"
+                        string="Migration Cost"
+                        domain="[('minutes_mig_to_next_version', '&gt;', 0)]"/>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_app_usage_line_list" model="ir.ui.view">
+        <field name="name">app.usage.line.list</field>
+        <field name="model">app.usage.line</field>
+        <field name="arch" type="xml">
+            <list string="Daily App Usage">
+                <field name="date"/>
+                <field name="module_version_id"/>
+                <!-- <field name="contract_id"/> -->
+                <field name="active_users"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_app_usage_line" model="ir.actions.act_window">
+        <field name="name">Daily Logs</field>
+        <field name="res_model">app.usage.line</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_app_usage_line_list"/>
+    </record>
+</odoo>
