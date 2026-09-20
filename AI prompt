@@ -20,27 +20,28 @@ Use existing apps (from Camptocamp and Onestein) to clone/monitor github apps & 
 
 Create an app to install on each client database to sync info with the marketplace.
 
-STEP 1A: MARKETPLACE APP FEATURES
-manifest: depends on external python library: pyscipopt
+STEP 1A: COST SHARING MARKETPLACE APP FEATURES
+Odoo module name: cost_sharing
+manifest: depends on "portal" and "product" and external python library: "pyscipopt"
 
 res.config.settings fields (store values in ir.config_parameter)
-- solver_weight_rating How many % to weigh the partner rating (sum score / total partners)? If a partner has thumbs up from every other partner, how much more can the partner take paid for its services?
-- solver_weight_author How many % to weigh a partner being Author of an app?
-- solver_weight_contributor How many % to weigh a partner being a Contributor of an app?
-- solver_weight_maintainer How many % to weigh a partner being a Maintainer of an app?
-- solver_margin How many % of the client price to keep
+- cs_weight_rating How many % to weigh the partner rating (sum score / total partners)? If a partner has thumbs up from every other partner, how much more can the partner take paid for its services?
+- cs_weight_author How many % to weigh a partner being Author of an app?
+- cs_weight_contributor How many % to weigh a partner being a Contributor of an app?
+- cs_weight_maintainer How many % to weigh a partner being a Maintainer of an app?
+- cs_margin How many % of the client price to keep
 Explain in the UI (new section in General Settings) that the system will weigh the rating + the largest of Author/Contributor/Maintainer if a partner is multiple of these for an app.
 
 res.partner
 We will use parent_id to connect a user contact with its partner company.
 Fields:
-- market_partner (boolean)
-- market_hours_per_week (integer): Register your Partner’s capacity for doing services for the marketplace (hours per week) on one week’s notice.
-- market_hour_price (monetary)
-- market_price_py (monetary)
-- market_price_js (monetary)
-- market_price_xml (monetary)
-- market_price_fixed (monetary)
+- cs_partner (boolean)
+- cs_hours_per_week (integer): Register your Partner’s capacity for doing services for the marketplace (hours per week) on one week’s notice.
+- cs_hour_price (monetary)
+- cs_price_py (monetary)
+- cs_price_js (monetary)
+- cs_price_xml (monetary)
+- cs_price_fixed (monetary)
 
 res.partner.rate fields
 - name (compute, should include these values: from_partner_id to_partner_id rate)
@@ -74,18 +75,21 @@ Example: Migration of 'account_financial_report' with attribute value '19.0-20.0
 product.supplierinfo
 We will use this model to register partner app migration price offer & estimated time.
 New fields:
-- market_hours (will be used by solver to make sure that a partner doesn't get more work than he has capacity for.)
-- market_hours_computed
-- market_price_computed
+- cs_hours (will be used by solver to make sure that a partner doesn't get more work than he has capacity for.)
+- cs_hours_computed
+- cs_price_computed
 New method: compute values (create the method now, complete the logic later)
 
-market.client
+cs.client
+- _description: "Cost Sharing Client"
 - name (compute, include values from partner_id and uuid)
 - partner_id
 - uuid
 - number_of_internal_users
+- service_ids (one2many)
 
-market.client.service
+cs.client.service
+- _description: "Cost Sharing Client Service"
 - client_id
 - attribute_value_id (filter on the XML data record: Migration)
 - willing_to_pay (monetary)
@@ -116,7 +120,7 @@ How much the client is willing to pay for migration.
 Client apps (one2many) to migrate
 No. of internal users.
 
-STEP 2: SOLVER
+STEP 1C: SOLVER
 Read
 - Solver settings
 - Client: apps & willingness to pay
@@ -177,7 +181,9 @@ C0: 500 for mrp
 C0: 300 for stock (9 users) 100 * r9
 C1: 200 for stock (4 users) 100 * r4
 
-STEP 3: CLIENT APP FEATURES
+STEP 2: CLIENT APP FEATURES
+Odoo module: cost_sharing_client
+
 Settings > General Settings > Cost Sharing: UUID field to connect with marketplace.
 Apps (ir.module.module) fields:
 - source (selection): Odoo, Enterprise, OCA, Other
