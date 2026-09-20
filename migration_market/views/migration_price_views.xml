@@ -8,7 +8,7 @@
                 <field name="supplier_id"/>
                 <field name="module_id"/>
                 <field name="supplier_score"/>
-                <field name="supplier_capacity"/>
+                <field name="supplier_capacity" optional="hide"/>
                 <field name="price"/>
                 <field name="currency_id" optional="hide"/>
             </list>
