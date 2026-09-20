@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.cost.sharing</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Cost Sharing" name="cost_sharing">
+                    <block title="Marketplace scoring">
+                        <setting string="Rating weight" help="Weight of a partner's average rating in the marketplace score.">
+                            <field name="cs_weight_rating"/>
+                        </setting>
+                        <setting string="Author weight" help="Weight for being the author of an app.">
+                            <field name="cs_weight_author"/>
+                        </setting>
+                        <setting string="Contributor weight" help="Weight for contributing to an app.">
+                            <field name="cs_weight_contributor"/>
+                        </setting>
+                        <setting string="Maintainer weight" help="Weight for maintaining an app.">
+                            <field name="cs_weight_maintainer"/>
+                        </setting>
+                        <setting string="Marketplace margin" help="Percentage of the client price retained by the marketplace.">
+                            <field name="cs_margin"/>
+                        </setting>
+                    </block>
+                    <div class="text-muted">
+                        The score combines the partner rating with the largest applicable Author, Contributor, or Maintainer weight when a partner has more than one role for an app.
+                    </div>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

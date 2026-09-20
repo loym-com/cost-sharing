@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.cost.sharing</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Cost Sharing">
+                    <group>
+                        <group>
+                            <field name="cs_partner"/>
+                            <field name="cs_hours_per_week"/>
+                            <field name="cs_hour_price"/>
+                            <field name="cs_price_fixed"/>
+                        </group>
+                        <group>
+                            <field name="cs_price_py"/>
+                            <field name="cs_price_js"/>
+                            <field name="cs_price_xml"/>
+                            <field name="cs_currency_id"/>
+                        </group>
+                    </group>
+                    <separator string="GitHub names"/>
+                    <field name="cs_github_ids">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                    <separator string="Repositories"/>
+                    <field name="cs_repo_ids">
+                        <list editable="bottom">
+                            <field name="url"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

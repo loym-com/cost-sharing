@@ -1,0 +1,21 @@
+{
+    "name": "Cost Sharing",
+    "version": "20.0.1.0.0",
+    "category": "Services",
+    "summary": "Marketplace for sharing open source Odoo migration costs",
+    "author": "Loym",
+    "license": "AGPL-3",
+    "depends": ["portal", "product"],
+    "external_dependencies": {"python": ["pyscipopt"]},
+    "data": [
+        "security/ir.access.csv",
+        "data/product_data.xml",
+        "views/res_config_settings_views.xml",
+        "views/res_partner_views.xml",
+        "views/product_views.xml",
+        "views/cost_sharing_views.xml",
+        "views/menus.xml",
+    ],
+    "installable": True,
+    "application": True,
+}

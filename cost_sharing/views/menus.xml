@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="cost_sharing_menu_root" name="Cost Sharing" sequence="50"/>
+    <menuitem id="cost_sharing_menu_clients" name="Clients" parent="cost_sharing_menu_root" action="cs_client_action" sequence="10"/>
+    <menuitem id="cost_sharing_menu_ratings" name="Partner Ratings" parent="cost_sharing_menu_root" action="res_partner_rate_action" sequence="20"/>
+    <menuitem id="cost_sharing_menu_supplies" name="Partner Supplies" parent="cost_sharing_menu_root" action="cs_partner_supply_action" sequence="30"/>
+</odoo>

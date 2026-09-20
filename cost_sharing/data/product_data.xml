@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_attribute_migration" model="product.attribute">
+        <field name="name">Migration</field>
+    </record>
+    <record id="product_attribute_value_migration_19_20" model="product.attribute.value">
+        <field name="name">19.0-20.0</field>
+        <field name="attribute_id" ref="product_attribute_migration"/>
+    </record>
+</odoo>

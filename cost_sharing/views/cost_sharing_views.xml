@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cs_client_view_list" model="ir.ui.view">
+        <field name="name">cs.client.view.list</field>
+        <field name="model">cs.client</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="uuid"/>
+                <field name="number_of_internal_users"/>
+            </list>
+        </field>
+    </record>
+    <record id="cs_client_view_form" model="ir.ui.view">
+        <field name="name">cs.client.view.form</field>
+        <field name="model">cs.client</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="uuid" readonly="1"/>
+                        <field name="number_of_internal_users"/>
+                    </group>
+                    <notebook>
+                        <page string="Demands">
+                            <field name="demand_ids">
+                                <list editable="bottom">
+                                    <field name="attribute_value_id" domain="[('attribute_id', '=', %(cost_sharing.product_attribute_migration)d)]"/>
+                                    <field name="willing_to_pay"/>
+                                    <field name="app_ids" widget="many2many_tags"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="cs_client_action" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">cs.client</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="res_partner_rate_view_list" model="ir.ui.view">
+        <field name="name">res.partner.rate.view.list</field>
+        <field name="model">res.partner.rate</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="from_partner_id"/>
+                <field name="to_partner_id"/>
+                <field name="rate"/>
+            </list>
+        </field>
+    </record>
+    <record id="res_partner_rate_action" model="ir.actions.act_window">
+        <field name="name">Partner Ratings</field>
+        <field name="res_model">res.partner.rate</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="cs_partner_supply_view_list" model="ir.ui.view">
+        <field name="name">cs.partner.supply.view.list</field>
+        <field name="model">cs.partner.supply</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="partner_id"/>
+                <field name="attribute_value_id"/>
+                <field name="app_id"/>
+                <field name="price"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+    <record id="cs_partner_supply_view_form" model="ir.ui.view">
+        <field name="name">cs.partner.supply.view.form</field>
+        <field name="model">cs.partner.supply</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="attribute_value_id"/>
+                        <field name="app_id"/>
+                        <field name="price"/>
+                        <field name="currency_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="cs_partner_supply_action" model="ir.actions.act_window">
+        <field name="name">Partner Supplies</field>
+        <field name="res_model">cs.partner.supply</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

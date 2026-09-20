@@ -1,0 +1,7 @@
+id,name,model_id,group_id/id,operation,domain
+access_res_partner_rate_user,res.partner.rate user,res.partner.rate,base.group_user,crud,
+access_res_partner_github_user,res.partner.github user,res.partner.github,base.group_user,crud,
+access_res_partner_repo_user,res.partner.repo user,res.partner.repo,base.group_user,crud,
+access_cs_client_user,cs.client user,cs.client,base.group_user,crud,
+access_cs_client_demand_user,cs.client.demand user,cs.client.demand,base.group_user,crud,
+access_cs_partner_supply_user,cs.partner.supply user,cs.partner.supply,base.group_user,crud,

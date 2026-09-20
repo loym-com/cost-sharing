@@ -88,12 +88,19 @@ cs.client
 - number_of_internal_users
 - service_ids (one2many)
 
-cs.client.service
-- _description: "Cost Sharing Client Service"
+cs.client.demand
+- _description: "Cost Sharing Client Demand"
 - client_id
 - attribute_value_id (filter on the XML data record: Migration)
 - willing_to_pay (monetary)
 - app_ids (many2many) ir.module.module
+
+cs.partner.supply
+- _description: "Cost Sharing Partner Supply"
+- partner_id
+- attribute_value_id
+- app_id
+- price
 
 
 STEP 1B: PORTAL
